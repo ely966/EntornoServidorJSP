@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/* Página formulario */
+#parrafoinicial{
+	text-align: centre;
+	
+}
+#horario{
+	text-align: right;
+	font-size: smaller;
+	color: #00C9FF;
+}
+#formulario{
+	 border: 5px outset red;
+  background-color: lightblue;    
+  text-align: center;
+}
+	/**<Pagina de mostrar el resultado> */
+	
+
+
+	/** Pagina de error. Núm negativo */
+	#divErrorNeg{
+		 border: 5px outset red;
+ 	 	background-color: lightyellow;    
+  		text-align: center;
+	}
+
+/** ------ */
+

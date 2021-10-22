@@ -1,38 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page errorPage = "errorNumeroNegativo.jsp" %>
+     <!-- Indica -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Añadir datos</title>
+<link rel="stylesheet" href="../css/estilo.css"  type="text/css"></link>
+
 </head>
 <body>
-	<h3>Bienvenido al super</h3>
+	<h3>Aqui puedes ver los registros introducidos y el precio total</h3>
 	<% 
-	String nomb=request.getParameter("nombre"); 
-	Integer preci=Integer.parseInt(request.getParameter("precio"));
-	
+	//String nomb=request.getParameter("nombre"); 
+	//Integer preci=Integer.parseInt(request.getParameter("precio"));
+	String marcaCoche=request.getParameter("marca"); 
+	Integer puertaCoche= Integer.parseInt(request.getParameter("puerta"));
+	Integer precioCoche= Integer.parseInt(request.getParameter("precio"));
+	String camaraCoche=request.getParameter("camara");
+	String masajeCoche=request.getParameter("masaje");
+	String sensoresCoche=request.getParameter("sensor");
 	%>
-	<jsp:useBean id = "supermercadoo" class = "clases.Supermercado"> 
+    <jsp:useBean id="vehiculo" class="clases.Automovil">
     </jsp:useBean>
     
-	<jsp:useBean id = "productoss" class = "clases.Producto"> 
-    </jsp:useBean>
     <%
+    vehiculo.setMarca(marcaCoche);
+    if(puertaCoche < 0){
+    	throw new RuntimeException("Error, numero negativo en el numero de puertas");
+    	}
+    else{
+    	vehiculo.setPuertas(puertaCoche);
+    	}
+    if(precioCoche < 0){
+    	throw new RuntimeException("Error, numero negativo en el precio");
+    	}
+    else{
+    	 vehiculo.setPrecio(precioCoche);
+    	 vehiculo.setPreciototal(precioCoche,false);
+    	}
+ 
+    Integer precioTotal=precioCoche;
+    if(camaraCoche.equals("si")){
+    	 precioTotal=precioTotal+100;
+    	vehiculo.setPreciototal(precioTotal,true);
+    }
+    if(masajeCoche.equals("si")){
+    	precioTotal=precioTotal+400;
+    	vehiculo.setPreciototal(precioTotal,true);
+    }
+    if(sensoresCoche.equals("si")){
+    	precioTotal=precioTotal+100;
+    	vehiculo.setPreciototal(precioTotal,true);
+    }
     
-    clases.Supermercado supermercad = new clases.Supermercado(); 
-    supermercad.setNombre("NewSupermercado");
-    clases.Producto productoo = new clases.Producto(); 
-    productoo.setNombre(nomb);
-    productoo.setPrecio(preci);
-    
-    System.out.println(productoo.toString());
-    supermercad.anadirProd(productoo);
-    System.out.println(supermercad.toString());
-    
-    
+    out.println(vehiculo.toStringMod());
+    //System.out.println(vehiculo.toStringMod()); 
     %>
-   
+  
+	<br>
  <a href="formulario.jsp">Volver añadir otro producto</a>	
 	
 </body>
