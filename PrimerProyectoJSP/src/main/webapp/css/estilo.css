@@ -1,5 +1,22 @@
 @charset "UTF-8";
-/* Página formulario */
+
+/*Index */
+#bodyIndex {
+	background: linear-gradient(to bottom, DeepSkyBlue, white);
+}
+
+#presentacion {
+	border-style: outset;
+	background: linear-gradient(to bottom, white, DeepSkyBlue);
+	float:left;
+	 width: 40%;
+	 
+}
+#imagen {
+	float:left;
+}
+
+/* Formulario */
 #parrafoinicial{
 	text-align: centre;
 	
