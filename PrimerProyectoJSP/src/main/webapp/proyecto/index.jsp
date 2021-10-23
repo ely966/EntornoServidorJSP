@@ -13,7 +13,7 @@
     
     <jsp:setProperty name = "garajee" property = "nombre" value = "GarajeX"/>
     </jsp:useBean>
-    <div id="Contenedor">
+    
     <div id="presentacion">
     	<p>
     	Bienvenido al <jsp:getProperty name="garajee" property="nombre"/>
@@ -25,7 +25,7 @@
     <div id="imagen">
     	<img src="../imagen/car.png" alt="red car" width="390" height="250" id="image">
     </div>
-    </div>
+  
     <br>
 
 </body>

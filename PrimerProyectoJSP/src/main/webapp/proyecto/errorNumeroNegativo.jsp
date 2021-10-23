@@ -12,7 +12,7 @@
 <body><pre>
 
 <div id="divErrorNeg">
-	<h3>Lo siento, pero hay un error. Número negativo</h3>
+	<h3 id="error">Lo siento, pero hay un error. Número negativo</h3>
  	<% //exception.printStackTrace(response.getWriter());Ver todo el error por defecto %> 
 	<p>Por favor intentalo de nuevo: </p>
 	<a href="formulario.jsp">Añadir producto</a>

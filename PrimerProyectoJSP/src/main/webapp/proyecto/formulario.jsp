@@ -18,10 +18,8 @@ Fecha : <%= new java.util.Date() %></div>
 	<h3 id="parradoinicial">Formulario de coche</h3>
 	<p>Marca:
 	<input type="text" name="marca" required/></p>
-	<br>
 	<p>Puertas:
 	<input type="number" name="puerta" required/></p>
-	<br>
 	Precio:
 	<input type="number" name="precio" required>
 	<br>
