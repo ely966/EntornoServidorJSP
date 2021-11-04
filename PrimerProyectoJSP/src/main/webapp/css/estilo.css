@@ -32,9 +32,11 @@ body {
 	color: #E72512;
 }
 #formulario{
-	 border: 5px outset #E72512;
+  border: 5px outset #E72512;
   background-color: lightblue;    
   text-align: center;
+    background: linear-gradient(to right, red, purple);
+  
 }
 	/**<Pagina de mostrar el resultado> */
 	
