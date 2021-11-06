@@ -30,31 +30,28 @@ public class ServletFinal extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//**Recoge la session**//
 		
 		 HttpSession sesion = request.getSession();
 	       PrintWriter out = response.getWriter();
-		   //if(request.getSession() != null) {
+		   if(request.getSession() != null) {
 			   
 			   /**Recogemos las variables**/
-			  /** String nombreleche =request.getParameter("nombreleche");
-			   String nombrecereales =request.getParameter("nombrecereales");
-			   String nombrepollo =request.getParameter("nombrepollo");
-			   String nombrezumo =request.getParameter("nombrezumo");
-			   **/
+	      
 			   /**Cantidades**/
-			   
-			   String cantidadLeche =request.getParameter("cantidadleche");
-			   String cantidadCereales =request.getParameter("cantidadcereales");
-			   String cantidadPollo =request.getParameter("cantidadpollo");
-			   String cantidadZumo =request.getParameter("cantidadzumo");
-		
-			  
-			   /**Convertir las cantidades en integer**/
-			   int cantLeche =Integer.parseInt (cantidadLeche);
-			   int cantPollo =Integer.parseInt (cantidadPollo);
-			   int cantZumo =Integer.parseInt (cantidadZumo);
-			   int cantCereales =Integer.parseInt (cantidadCereales);
-			   
+	       int numLechee = Integer.parseInt (sesion.getAttribute("numLeche").toString());
+		   int numPolloo = Integer.parseInt (sesion.getAttribute("numPolloo").toString());
+		   int numCerealess = Integer.parseInt (sesion.getAttribute("numCereales").toString());
+		   int numZumoo = Integer.parseInt (sesion.getAttribute("numZumoo").toString());
+		  
+		   	//**Recogemos la opcion de envio**//
+		   String opcionEnvio=request.getParameter("opcionenvio");
+		   
+		   //** Precio del envio**//
+		   int precioEnvio =0;
+		   if(opcionEnvio.equals("EnvioACasa")) {
+			   precioEnvio =20;
+		   }
 			   //Hacemos la suma del precio total
 			   
 			   //*Precio de cada uno*//
@@ -64,29 +61,30 @@ public class ServletFinal extends HttpServlet {
 			   int pPollo=4; 
 			    
 			   //Vamos calculando el precio de cada uno
-			   int precioTotalLeche= cantLeche*pLeche;
-			   int precioTotalCereales=cantCereales*pCereales;
-			   int precioTotalZumo=cantZumo*pZumo;
-			   int precioTotalPollo=cantPollo*pPollo;
+			   int precioTotalLeche= numLechee*pLeche;
+			   int precioTotalCereales=numCerealess*pCereales;
+			   int precioTotalZumo=numZumoo*pZumo;
+			   int precioTotalPollo=numPolloo*pPollo;
 			   //Para la suma total
-			   int precioTotal= precioTotalLeche + precioTotalCereales + precioTotalZumo + precioTotalPollo;
+			   int precioTotal= precioTotalLeche + precioTotalCereales + precioTotalZumo + precioTotalPollo+  precioEnvio;
 			   
 			   //*Mostrar en la pagina*//
 			   
-			   out.println ("<!DOCTYPE html>\n <head> <meta charset=\'UTF-8'> \n"
-						+ "<title>Resumen</title>\n"
-						+ "</head> <body> <h3>Mostraremos factura final</h3>\n"
-						+ "<table border='1'><tr><td>Producto</td><td>Cantidad</td> <td>Precio</td></tr>"
-						+ "<tr><td>Leche</td><td>"+cantLeche+"</td><td>"+pLeche+"</td></tr>"
-						+ "<tr><td>Pollo</td><td>"+cantPollo+"</td><td>"+pPollo+"</td></tr>"
-						+ "<tr><td>Zumo</td><td>"+cantZumo+"</td><td>"+pZumo+"</td></tr>"
-						+ "<tr><td>Cereales/td><td>"+cantCereales+"</td><td>"+pCereales+"</td></tr>"
-						+ "<tr><td>Precio total:</td><td>--</td><td>"+precioTotal+"</td></tr></table></body></html>");
+			   out.println ("<!DOCTYPE html>\n <html><head> <meta charset='UTF-8'> \n"
+						+ "<title>Factura</title>\n"
+						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\" </head> <body> <div id='divFinal' ><h3>Mostraremos factura final</h3>\n"
+						+ "<table id='tablaFinal' border='1'><tr><th>Producto</th><th>Cantidad</th> <th>Precio</th></tr>"
+						+ "<tr><td>Leche</td><td>"+numLechee+"</td><td>"+precioTotalLeche+"</td></tr>"
+						+ "<tr><td>Pollo</td><td>"+numPolloo+"</td><td>"+precioTotalPollo+"</td></tr>"
+						+ "<tr><td>Zumo</td><td>"+numZumoo+"</td><td>"+precioTotalZumo+"</td></tr>"
+						+ "<tr><td>Cereales</td><td>"+numCerealess+"</td><td>"+precioTotalCereales+"</td></tr>"
+						+ "<tr><th>Extra</th><th>Opcion</th><th>Precio</th></tr><tr><td>Costes de envio: - </td><td>"+opcionEnvio + " </td><td> " + precioEnvio+"</td></tr>"
+						+ "<tr><td>Precio total:</td><td>--</td><td>"+precioTotal+"</td></tr></table><p>Volver al inicio: <a href='http://localhost:8080/ProyectoJspConServlet/proyecto/index.jsp'>Volver</a></p></div></body></html>");
 			   
 			   
 			   
 			   //}
-	}
+	}}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

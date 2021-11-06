@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Indice</title>
 <link rel="stylesheet" href="../css/estilo.css"  type="text/css"></link>
 
 </head>
@@ -13,7 +13,8 @@
 	<p><h2>Bienvenido al carrito de la compra</h2></p>
 	<p>Por favor, ingresa tu usuario:</p>
 		<form action="/ProyectoJspConServlet/ServletComprobaryCatalogo" method ="get">
-			Usuario: <input type="text" name="user" value="user" id="user" required>
+			<p>Usuario: <input type="text" name="user" value="Maria" id="user" required></p>
+			<p>Password: <input type="text" name="pass" value="Maria" id="pass" required></p>
 			<input type="submit" value="enviar">
 			
 		</form>

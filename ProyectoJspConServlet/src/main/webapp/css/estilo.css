@@ -20,10 +20,27 @@ div {
    opacity: 99;
 }
 #divIndex{
- 
+ 	height: 400px;
   
 }
 #errorUser{
 	border: 5px outset red; 
 	 padding: 30px;
+}
+#divResumen{
+	height: 420px;
+}
+#divFinal{
+	padding: 10px;
+	height: 300px;
+}
+#tablaFinal{
+	 border-collapse: collapse;
+	  margin: auto;
+}
+#tablaFinal td{
+	background-color: #FFFFFF;
+}
+#tablaFinal th{
+	background-color: #4F9DF7;
 }

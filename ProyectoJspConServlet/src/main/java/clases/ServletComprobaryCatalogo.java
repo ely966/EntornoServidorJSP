@@ -28,26 +28,25 @@ public class ServletComprobaryCatalogo extends HttpServlet {
 			// TODO Auto-generated method stub
 			/** Recoger sessionSession**/
 			HttpSession sesion = request.getSession();
-		    if(sesion.isNew()) {//**Si la session es nueva , que es este caso lo es**/
+		    //if(sesion.isNew()) {//**Si la session es nueva , que es este caso lo es**/
 		    	sesion.setAttribute("usuarioo",request.getParameter("user"));
-		    }
+		   // }
 			PrintWriter out = response.getWriter();
 			
 			//**Comprobamos si el usuario introducido existe en el array**//
 			/**Recogemos l usuario ingresado en el login**/
 			String usuarioIngresado =request.getParameter("user");/**Recogemos el usuario introducido**/
+			String usuarioPass = request.getParameter("pass");
 			//**comprobamos si el usuario existe**/
-			if (users.comprobar(usuarioIngresado)) { //**Si es true,significa que el usuario pertenece al array**//
+			if (users.comprobar(usuarioIngresado,usuarioPass)) { //**Si es true,significa que el usuario pertenece al array**//
 		
 				/**Empezamos a mostrar la pagina**/
-				out.println ("<!DOCTYPE html>\n"
-						+ "<html><head><meta charset=\"UTF-8\">\n"
+				out.println ("<!DOCTYPE html><html>"
+						+ "<head><meta charset=\"UTF-8\">"
 						+ "<title>Catalogo</title>\n"
-						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\"  type=\"text/css\"></link></head> <body>");
-				
-				/**Creamos el catalogo**/
-				out.println ("<div id='divcatalogo'><form action='/ProyectoJspConServlet/ServletResumen' method ='get'>\n"+
-						"<p id='sesion'>"+sesion.getAttribute("usuarioo")+"</p>"
+						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\"  type=\"text/css\"></link></head> <body>"
+						+ "<div id='divcatalogo'><form action='/ProyectoJspConServlet/ServletResumen' method ='get'>\n"+
+						"Bienvenido usuario  "+sesion.getAttribute("usuarioo")+"<p>Aqui está la lista de productos : </p>"
 						+ "Leche: <input type='number' name='leche' value='0' id='leche' required><br>"
 						+"Cereales: <input type='number' name='cereales' value='0' id='cereales' required ><br>"
 						+"Pollo: <input type='number' name='pollo' value='0' id='pollo' required><br>"

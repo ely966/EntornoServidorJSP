@@ -17,11 +17,13 @@ public class Usuarios {
 		usuarioss.put("Antonio","Antonio");
 	}
 	
-	public boolean comprobar (String usuario) {
+	public boolean comprobar (String usuario,String pass) {
 		boolean comprobacion= false; /**Iniciamos diciendo que el usuario no existe**/
 		for (String user : usuarioss.keySet()) { /**Recorremos ls usuarios**/
 			if (user.equals(usuario)) {/**Si el usuario introducido coincide con algun usuario de la array, que cambie**/
-				comprobacion = true;
+				if(user.equals(pass)) {
+					comprobacion = true;
+				}
 			}
 		}
 		//if(comprobacion ==false) {

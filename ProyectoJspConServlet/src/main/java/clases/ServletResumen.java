@@ -60,17 +60,27 @@ public class ServletResumen extends HttpServlet {
 									prod.setCantidad(numZumoo);
 								}
 				}
+			   //**Anadir la cantidad de producto en la session**//
+			   	sesion.setAttribute("numPolloo",numPollo);
+			   	sesion.setAttribute("numZumoo", numZumoo);
+			   	sesion.setAttribute("numCereales",numCerealess);
+			   	sesion.setAttribute("numLeche",numLechee);
+			   //****//
 				
 			   out.println ("<!DOCTYPE html>\n <head> <meta charset=\'UTF-8'> \n"
-						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\" type=\"text/css\"></link></head> <body> <div id='divResumen'><h3>Mostraremos los productos y la cantidad</h3>\n"
+						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\" type=\"text/css\"></link></head> <body> <div id='divResumen'><h4>Mostraremos los productos y la cantidad</h4>\n"
 						+ "<form action='/ProyectoJspConServlet/ServletFinal' id='form'"+
-					   	"<p>Producto-Cantidad</p><br>"+sesion.getAttribute("usuarioo") + "<br>");
+					   	"<p>Producto-Cantidad</p>");
 			   /**Mostrar Producto y cantidad**/
 			   for (Producto prod : p.productos) 
 			   {
 				out.println("<input id='nombre"+prod.getNombre()+"' value='" +prod.getNombre()+ "'readonly><input id='cantidad"+prod.getNombre()+"' value='"+prod.getCantidad()+"'><br>");   
 			   }
-			   out.println( "<input type='submit' value='Enviar'></form>Volver al inicio: <a href='/ProyectoJspConServlet/proyecto/indice.jsp'>Volver</a></div></body></html>"); 
+			   //**Opcion de envio**//
+			   out.println("<p>---------------</p><h4>Opciones de envio</h4> " +
+			   "<p><input type='radio' id='opcionenvio' name='opcionenvio' value='EnvioACasa' required>EnvioACasa</p><p><input type='radio' id='opcionenvio' name='opcionenvio' value='RecogidaEnTienda' required>RecogidaEnTienda</p>");
+			   
+			   out.println( "<input type='submit' value='Enviar'></form></div></body></html>"); 
 			   
 		   }/**Muestra pagina hasta aqui**/
 			   
