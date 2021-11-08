@@ -42,16 +42,18 @@ public class ServletResumen extends HttpServlet {
 		   int numCerealess = Integer.parseInt (numCereales);
 		   int numZumoo = Integer.parseInt (numZumo);
 		   
-		   /*COmprobamos si hay algun negativo*/
+		   /**Comprobamos si hay algun negativo**/
 		   if (numLechee < 0 || numPolloo <0 || numCerealess < 0 || numZumoo <0) {
-			   /*Exception por numero negativo*/
+			   /**Exception por numero negativo**/
 			   response.sendRedirect("/ProyectoJspConServlet/proyecto/numeroNegativo.jsp");  
 			   
 		   }else {/**La cantidad de cada producto es correcto**/
 			   Productos p= new Productos();/**Creamos los productos**/
 			   /**Modificamos la cantidad del producto **/
 			   for (Producto prod : p.productos) 
-			   { /**Recorremos ls usuarios**/
+			   { 
+				   //**Recorremos los productos y vamos añadiendo la cantidad de cada uno ingresado **//
+				   //**en el formulario de la pagina anterior**//
 						if(prod.getNombre().equals("pollo")) {
 							prod.setCantidad(numPolloo);
 						}else if (prod.getNombre().equals("cereales")) {
@@ -68,12 +70,12 @@ public class ServletResumen extends HttpServlet {
 			   	sesion.setAttribute("numCereales",numCerealess);
 			   	sesion.setAttribute("numLeche",numLechee);
 			   //****//
-				
+			    //**Mostrar en la pagina**//
 			   out.println ("<!DOCTYPE html>\n <head> <meta charset=\'UTF-8'> \n"
 						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\" type=\"text/css\"></link></head> <body> <div id='divResumen'><h4>Mostraremos los productos y la cantidad</h4>\n"
 						+ "<form action='/ProyectoJspConServlet/ServletFinal' id='form'"+
 					   	"<p>Producto-Cantidad</p>");
-			   /**Mostrar Producto y cantidad**/
+			   //**Mostrar Producto y cantidad**//
 			   for (Producto prod : p.productos) 
 			   {
 				out.println("<input id='nombre"+prod.getNombre()+"' value='" +prod.getNombre()+ "'readonly><input id='cantidad"+prod.getNombre()+"' value='"+prod.getCantidad()+"'readonly><br>");   
@@ -82,7 +84,7 @@ public class ServletResumen extends HttpServlet {
 			   out.println("<p>---------------</p><h4>Opciones de envio</h4> " +
 			   "<p><input type='radio' id='opcionenvio' name='opcionenvio' value='EnvioACasa' required>EnvioACasa</p><p><input type='radio' id='opcionenvio' name='opcionenvio' value='RecogidaEnTienda' required>RecogidaEnTienda</p>");
 			   
-			   out.println( "<input type='submit' value='Enviar'></form></div></body></html>"); 
+			   out.println( "<input type='submit' value='Comprobar'></form></div></body></html>"); 
 			   
 		   }/**Muestra pagina hasta aqui**/
 			   
@@ -91,7 +93,7 @@ public class ServletResumen extends HttpServlet {
 	   
 		   
 	   }else {
-		   /**Si session es null es que no existe**/
+		   //**Si session es null significa que no existe, por lo tanto que le redirija**//
 		   response.sendRedirect("/ProyectoJspConServlet/proyecto/sesionExpirada.jsp");  
 	   }
     	}

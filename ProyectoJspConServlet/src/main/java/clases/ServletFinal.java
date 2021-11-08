@@ -84,8 +84,9 @@ public class ServletFinal extends HttpServlet {
 				   
 				  //**AHora INvalidamos la session **// 
 				   sesion.invalidate();
-				   
-		   }else {
+				   //**Hasta aqui la pagina**//
+				 
+		   }else { //**Si el servlet es null, que lo redirija**// 
 			   response.sendRedirect("/ProyectoJspConServlet/proyecto/errorUserNoExiste.jsp");  		   }
 		   }
 
