@@ -27,6 +27,8 @@ public class ServletResumen extends HttpServlet {
 	   
        PrintWriter out = response.getWriter();
 	   if(request.getSession() != null) {
+		   //sesion.setMaxInactiveInterval(4);
+			   
 		   
 		   /*Recogemos las variables*/
 		   String numLeche =request.getParameter("leche");
@@ -74,7 +76,7 @@ public class ServletResumen extends HttpServlet {
 			   /**Mostrar Producto y cantidad**/
 			   for (Producto prod : p.productos) 
 			   {
-				out.println("<input id='nombre"+prod.getNombre()+"' value='" +prod.getNombre()+ "'readonly><input id='cantidad"+prod.getNombre()+"' value='"+prod.getCantidad()+"'><br>");   
+				out.println("<input id='nombre"+prod.getNombre()+"' value='" +prod.getNombre()+ "'readonly><input id='cantidad"+prod.getNombre()+"' value='"+prod.getCantidad()+"'readonly><br>");   
 			   }
 			   //**Opcion de envio**//
 			   out.println("<p>---------------</p><h4>Opciones de envio</h4> " +
@@ -90,7 +92,7 @@ public class ServletResumen extends HttpServlet {
 		   
 	   }else {
 		   /**Si session es null es que no existe**/
-		   response.sendRedirect("/ProyectoJspConServlet/proyecto/indice.jsp");  
+		   response.sendRedirect("/ProyectoJspConServlet/proyecto/sesionExpirada.jsp");  
 	   }
     	}
     

@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="../css/estilo.css"  type="text/css"></link>
 
 </head>
-<body id="bodyUserNoexiste">
+<body id="bodySesionExpirada">
 
 <div id="errorUser">
-<p id="hUserNoexiste">El usuario introducido no existe o session espirada. Por favor vuelve al formulario e inténtelo de nuevo</p>
+<p >Sesion Expirada. Por favor vuelve al formulario e inténtelo de nuevo</p>
 
 <a href="index.jsp">Volver al inicio</a>
 </div>

@@ -30,6 +30,7 @@ public class ServletComprobaryCatalogo extends HttpServlet {
 			HttpSession sesion = request.getSession();
 		    //if(sesion.isNew()) {//**Si la session es nueva , que es este caso lo es**/
 		    	sesion.setAttribute("usuarioo",request.getParameter("user"));
+		    	
 		   // }
 			PrintWriter out = response.getWriter();
 			
@@ -51,7 +52,7 @@ public class ServletComprobaryCatalogo extends HttpServlet {
 						+"Cereales: <input type='number' name='cereales' value='0' id='cereales' required ><br>"
 						+"Pollo: <input type='number' name='pollo' value='0' id='pollo' required><br>"
 						+"Zumo: <input type='number' name='zumo' value='0' id='zumo' required><br>"
-						+"<input type='submit' value='enviar'>\n"
+						+"<input type='submit' value='Comprar'>\n"
 						+ "	</form> "
 						+ ""
 						+ "</div>");
