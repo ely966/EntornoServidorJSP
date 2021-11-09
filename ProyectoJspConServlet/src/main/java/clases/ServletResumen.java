@@ -26,7 +26,7 @@ public class ServletResumen extends HttpServlet {
 	   HttpSession sesion = request.getSession(false);
 	   
        PrintWriter out = response.getWriter();
-	   if(sesion.getAttribute("usuarioo")!= null) {
+	   if( request.getSession(false) != null) {
 		   //sesion.setMaxInactiveInterval(4);
 		  
 		   
