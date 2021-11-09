@@ -21,15 +21,11 @@ public class Usuarios {
 		boolean comprobacion= false; /**Iniciamos diciendo que el usuario no existe**/
 		for (String user : usuarioss.keySet()) { /**Recorremos ls usuarios**/
 			if (user.equals(usuario)) {/**Si el usuario introducido coincide con algun usuario de la array, que cambie**/
-				if(user.equals(pass)) {
+				if(user.equals(pass)) {/**En este caso la contraseña y el usuario son iguales, asi que aparte que el usuario coincida, la contraseña tambien debe coincidir**/
 					comprobacion = true;
 				}
 			}
 		}
-		//if(comprobacion ==false) {
-		//	throw new RuntimeException("Error, el usuario no existe");
-			
-		//}
 		return comprobacion;
 	}
 	public String getNombre() {

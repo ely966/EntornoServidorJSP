@@ -9,15 +9,9 @@ public class Productos {
 	public Productos() {
 		super();
 		this.productos = new ArrayList<Producto>();
-		init();
+		init(); /**Iniciar añadiendo unos productos**/
 	}
-	/**public void init() {/**Producto y cantidad**/
-/**		productos.put("leche",0);
-		productos.put("pollo",0);
-		productos.put("cereales",0);
-		productos.put("zumo",0);
-		
-	}**/
+	
 	public void init () {
 		
 		/**Crear productos**/

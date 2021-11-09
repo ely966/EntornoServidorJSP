@@ -26,9 +26,9 @@ public class ServletResumen extends HttpServlet {
 	   HttpSession sesion = request.getSession(false);
 	   
        PrintWriter out = response.getWriter();
-	   if(request.getSession() != null) {
+	   if(sesion.getAttribute("usuarioo")!= null) {
 		   //sesion.setMaxInactiveInterval(4);
-			   
+		  
 		   
 		   /*Recogemos las variables*/
 		   String numLeche =request.getParameter("leche");
@@ -72,8 +72,8 @@ public class ServletResumen extends HttpServlet {
 			   //****//
 			    //**Mostrar en la pagina**//
 			   out.println ("<!DOCTYPE html>\n <head> <meta charset=\'UTF-8'> \n"
-						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\" type=\"text/css\"></link></head> <body> <div id='divResumen'><h4>Mostraremos los productos y la cantidad</h4>\n"
-						+ "<form action='/ProyectoJspConServlet/ServletFinal' id='form'"+
+						+ "<link rel=\"stylesheet\" href=\"/ProyectoJspConServlet/css/estilo.css\" type=\"text/css\"></link></head> <body> <div id='divResumen'><h4>Mostraremos los productos y la cantidad</h4>\n" +
+					   "<form action='/ProyectoJspConServlet/ServletFinal' id='form'"+
 					   	"<p>Producto-Cantidad</p>");
 			   //**Mostrar Producto y cantidad**//
 			   for (Producto prod : p.productos) 

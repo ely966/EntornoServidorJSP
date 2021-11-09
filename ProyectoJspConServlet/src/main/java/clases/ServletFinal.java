@@ -32,43 +32,44 @@ public class ServletFinal extends HttpServlet {
 		// TODO Auto-generated method stub
 		//**Recoge la session**//
 		
-		 HttpSession sesion = request.getSession();
+		 HttpSession sesion = request.getSession(false);
 	       PrintWriter out = response.getWriter();
-		   if(request.getSession() != null) {
+		   if(sesion.getAttribute("usuarioo") != null) {
 			   
 				   /**Recogemos las variables**/
-		      
-				   /**Cantidades**/
+			  
+			   
+			/**Cantidades**/
 		       int numLechee = Integer.parseInt (sesion.getAttribute("numLeche").toString());
 			   int numPolloo = Integer.parseInt (sesion.getAttribute("numPolloo").toString());
 			   int numCerealess = Integer.parseInt (sesion.getAttribute("numCereales").toString());
 			   int numZumoo = Integer.parseInt (sesion.getAttribute("numZumoo").toString());
 			  
-			   	//**Recogemos la opcion de envio**//
+			   	/**Recogemos la opcion de envio**/
 			   String opcionEnvio=request.getParameter("opcionenvio");
 			   
-			   //** Precio del envio**//
+			   /** Precio del envio**/
 			   int precioEnvio =0;
 			   if(opcionEnvio.equals("EnvioACasa")) {
 				   precioEnvio =20;
 			   }
-				   //Hacemos la suma del precio total
+				   /**Hacemos la suma del precio total**/
 				   
-				   //*Precio de cada uno*//
+				   /**Precio de cada uno**/
 				   int pLeche=1;
 				   int pCereales =3;
 				   int pZumo=2;
 				   int pPollo=4; 
 				    
-				   //Vamos calculando el precio de cada uno
+				   /**Vamos calculando el precio de cada uno**/
 				   int precioTotalLeche= numLechee*pLeche;
 				   int precioTotalCereales=numCerealess*pCereales;
 				   int precioTotalZumo=numZumoo*pZumo;
 				   int precioTotalPollo=numPolloo*pPollo;
-				   //Para la suma total
+				   /**Para la suma total**/
 				   int precioTotal= precioTotalLeche + precioTotalCereales + precioTotalZumo + precioTotalPollo+  precioEnvio;
 				   
-				   //*Mostrar en la pagina*//
+				   /**Mostrar en la pagina**/
 				   
 				   out.println ("<!DOCTYPE html>\n <html><head> <meta charset='UTF-8'> \n"
 							+ "<title>Factura</title>\n"
@@ -82,12 +83,12 @@ public class ServletFinal extends HttpServlet {
 							+ "<tr><td>Precio total:</td><td>--</td><td>"+precioTotal+"</td></tr></table><p>Volver al inicio: <a href='http://localhost:8080/ProyectoJspConServlet/proyecto/index.jsp'>Volver</a></p></div></body></html>");
 				   
 				   
-				  //**AHora INvalidamos la session **// 
+				  /**Ahora Invalidamos la session **/
 				   sesion.invalidate();
-				   //**Hasta aqui la pagina**//
+				   /**Hasta aqui la pagina**/
 				 
-		   }else { //**Si el servlet es null, que lo redirija**// 
-			   response.sendRedirect("/ProyectoJspConServlet/proyecto/errorUserNoExiste.jsp");  		   }
+		   }else { /**Si el servlet es null, que lo redirija**/
+			   response.sendRedirect("/ProyectoJspConServlet/proyecto/sesionExpirada.jsp");  		   }
 		   }
 
 	/**
